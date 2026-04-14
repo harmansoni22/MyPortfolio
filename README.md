@@ -26,4 +26,4 @@ The content will change as I grow, but the goal stays the same: show what I can 
 If you want to talk about work, ideas, or collaborations:
 
 - **Email:** [harman.codes.dev@gmail.com](mailto:harman.codes.dev@gmail.com)  
-- **Instagram:** [@harman.jsx](https://instagram.com/harman.jsx)
+- **Instagram:** [harman.jsx](https://instagram.com/harman.jsx)
