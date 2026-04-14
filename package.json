@@ -10,9 +10,16 @@
     "format": "biome format --write"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.38.0",
+    "gsap": "^3.14.2",
+    "lenis": "^1.3.21",
+    "motion": "^12.38.0",
     "next": "16.2.3",
+    "ogl": "^1.0.11",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",

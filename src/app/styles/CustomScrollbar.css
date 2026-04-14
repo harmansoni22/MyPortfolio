@@ -1,0 +1,51 @@
+/*
+    |============================|
+    |  Custom Scroll Bar Styles  |
+    |============================|
+*/
+
+.scroll-container {
+  width: 5px;
+  min-height: calc(100vh - 20px);
+  height: calc(100vh - 20px);
+  position: fixed;
+  overflow: visible;
+  background: #eeeeee45;
+  border-radius: 10px;
+  top: 10px;
+  right: 3px;
+  z-index: 50;
+  backdrop-filter: blur(5px);
+}
+/* .scroll-container:hover .scroll-bar {
+    background: #eeeeeebf;
+} */
+
+.scroll-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150%;
+  height: 10%;
+  /* background: #eeeeee; */
+  background: linear-gradient(145deg, #71f6ff, #00516c);
+  border-radius: 10px;
+  /* transform: translateX(-(calc(width - (100 + (width - 100)/2)))); */
+  transform: translateX(-20%);
+  cursor: grab;
+  touch-action: none;
+  will-change: height, transform;
+  transition:
+    background-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+/* .scroll-bar:hover {
+    background: #eeeeeebf;
+} */
+.scroll-bar:active {
+  cursor: grabbing;
+}
+.scroll-bar.elastic {
+  background: linear-gradient(145deg, #71f6ff, #00516c);
+  box-shadow: 0 0 12px #76eaff88;
+}
