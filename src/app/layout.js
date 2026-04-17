@@ -6,6 +6,7 @@ import SourceTracker from "@/components/analytics/SourceTracker";
 import { satoshi, inter } from "@/libs/fonts";
 import { Suspense } from "react";
 import LenisProvider from "./components/providers/LenisProvider";
+import Footer from "./components/layout/footer/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,13 +34,13 @@ export default function RootLayout({ children }) {
         <Suspense fallback={null}>
           <Navbar />
         </Suspense>
-        <SplashCursor
+        {/* <SplashCursor
           SPLAT_RADIUS={0.07}
           DYE_RESOLUTION={1080}
           DENSITY_DISSIPATION={3.5}
           PRESSURE_ITERATIONS={5}
           className={"z-[-1]"}
-        />
+        /> */}
         <main className="flex-1">
           <Suspense fallback={<h1>Loading...</h1>}>
             <LenisProvider>
@@ -47,6 +48,10 @@ export default function RootLayout({ children }) {
             </LenisProvider>
           </Suspense>
         </main>
+
+        <Suspense fallback={<h1>Loading footer...</h1>}>
+          <Footer />
+        </Suspense>
       </body>
     </html>
   );
