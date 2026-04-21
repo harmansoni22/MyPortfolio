@@ -3,7 +3,6 @@
 import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
 import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
 
 const StaggeredMenu = ({
@@ -20,13 +19,11 @@ const StaggeredMenu = ({
   changeMenuColorOnOpen = true,
   isFixed = false,
   accentColor = "#5227FF",
-  headerActions = [],
   closeOnClickAway = true,
   onMenuOpen,
   onMenuClose,
 }) => {
   const [open, setOpen] = useState(false);
-  const _pathname = usePathname();
   const openRef = useRef(false);
 
   const panelRef = useRef(null);
@@ -60,25 +57,6 @@ const StaggeredMenu = ({
 
   const toggleBtnRef = useRef(null);
   const busyRef = useRef(null);
-
-  const param = useSearchParams();
-  const isUserAuthenticated = param.get("user_authenticated") === "true";
-//   const actionsToRender = headerActions.length
-//     ? headerActions
-//     : [
-//         {
-//           label: "Login",
-//           link: "/login",
-//           ariaLabel: "Login to your account",
-//           variant: "secondary",
-//         },
-//         {
-//           label: "Sign Up",
-//           link: "/signup",
-//           ariaLabel: "Create a new account",
-//           variant: "primary",
-//         },
-//       ];
 
   const itemEntranceTweenRef = useRef(null);
 
@@ -666,51 +644,6 @@ const StaggeredMenu = ({
               pointer-events-auto
             "
           >
-            {/* <div
-              className="
-                inline-flex
-                items-center
-                rounded-md
-                bg-[#021f5f47]
-                backdrop-blur-sm
-                overflow-hidden
-              "
-            >
-              {actionsToRender.map((action, index) => {
-                const isPrimary = action.variant === "primary";
-                const classByVariant = isPrimary
-                  ? isUserAuthenticated
-                    ? "bg-white-60 text-[#999] hover:bg-[#eeeeee]"
-                    : "bg-[#eeeeee45] text-[#eee] hover:bg-white-60"
-                  : isUserAuthenticated
-                    ? "bg-[#eeeeee45] text-[#eee] hover:bg-white-60"
-                    : "bg-white-60 text-[#999]";
-
-                return (
-                  <Link
-                    key={`${action.label}-${index}`}
-                    href={action.link}
-                    aria-label={action.ariaLabel ?? action.label}
-                    className={`
-                      inline-flex
-                      items-center
-                      justify-center
-                      rounded-sm
-                      px-4
-                      py-1.5
-                      text-xs
-                      font-semibold
-                      transition-colors
-                      duration-200
-                      ${classByVariant}
-                    `}
-                  >
-                    {action.label}
-                  </Link>
-                );
-              })}
-            </div> */}
-
             <button
               ref={toggleBtnRef}
               className="
