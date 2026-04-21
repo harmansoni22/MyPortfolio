@@ -41,21 +41,6 @@ const Navbar = () => {
     },
   ];
 
-  const headerActions = [
-    {
-      label: "Login",
-      link: "/login",
-      ariaLabel: "Login to your account",
-      variant: "secondary",
-    },
-    {
-      label: "Sign Up",
-      link: "/signup",
-      ariaLabel: "Create a new account",
-      variant: "primary",
-    },
-  ];
-
   return (
     <div
       style={{
@@ -66,7 +51,6 @@ const Navbar = () => {
         position="right"
         items={menuItems}
         socialItems={socialItems}
-        headerActions={headerActions}
         displaySocials
         displayItemNumbering={false}
         isFixed={true}
