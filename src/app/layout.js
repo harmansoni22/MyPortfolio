@@ -1,58 +1,97 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/layout/navigation/Navbar";
-import SplashCursor from "./components/effects/cursor/SplashCursor";
 import SourceTracker from "@/components/analytics/SourceTracker";
 import { satoshi, inter } from "@/libs/fonts";
 import { Suspense } from "react";
 import LenisProvider from "./components/providers/LenisProvider";
 import Footer from "./components/layout/footer/footer";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import PreLoaderProvider from "./components/pre-loader/PreLoaderProvider";
 
 export const metadata = {
-  title: "Harman Soni | Portfolio",
-  description: "Frontend-focused developer building AI-driven projects with clean architecture and real-world problem solving.",
+  	title: {
+		default: "Harman Soni | Developer | Student",
+		template: "%s | Harman Soni"
+	},
+  	description: "Frontend-focused developer building AI-driven projects with clean architecture and real-world problem solving.",
+	keywords: [
+		"Harman Soni",
+		"Frontend Developer",
+		"Next.js",
+		"React",
+		"React JS",
+		"Portfolio",
+		"Vue.JS",
+		"TezJS",
+		"AI Projects",
+		"Developer from Dhar",
+		"Developer from India"
+	],
+	openGraph: {
+		type: "website",
+		siteName: "Harman Soni's Portfolio",
+		title: "Harman Soni | Developer",
+		description:
+			"Frontend-focused developer building AI-driven projects with clean architecture and real-world problem solving.",
+		images: [
+			{
+				url: "/logo_no-bg.png",
+				width: 1200,
+				height: 1200,
+				alt: "Harman's Portfolio"
+			},
+		]
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: "Harman Soni | Developer",
+		description:
+			      "Frontend-focused developer building AI-driven projects with clean architecture and real-world problem solving.",
+		images: ["/logo_no-bg.png"],
+	},
+	robots: {
+		index: true,
+		follow: true,
+		googleBot: {
+			index: true,
+			follow: true,
+			"max-image-preview": "large",
+			"max-snippet": -1,
+			"max-video-preview": -1,
+		},
+	},
+	icons: {
+		icon: "/logo-white_no-bg.png",
+		shortcut: "/logo-white_no-bg.png",
+		apple: "/logo-white_no-bg.png",
+	},
 };
 
 export default function RootLayout({ children }) {
-  return (
-    <html
-      lang="en"
-      className={`${satoshi.variable} ${inter.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
-        <SourceTracker />
-        <Suspense fallback={null}>
-          <Navbar />
-        </Suspense>
-        {/* <SplashCursor
-          SPLAT_RADIUS={0.07}
-          DYE_RESOLUTION={1080}
-          DENSITY_DISSIPATION={3.5}
-          PRESSURE_ITERATIONS={5}
-          className={"z-[-1]"}
-        /> */}
-        <main className="flex-1">
-          <Suspense fallback={<h1>Loading...</h1>}>
-            <LenisProvider>
-              {children}
-            </LenisProvider>
-          </Suspense>
-        </main>
+  	return (
+    	<html
+      		lang="en"
+      		className={`${satoshi.variable} ${inter.variable} h-full antialiased`}
+      		suppressHydrationWarning
+    	>
+      		<body className="min-h-full flex flex-col">
+        		<SourceTracker />
+        		<PreLoaderProvider>
+        		<Suspense fallback={null}>
+          			<Navbar />
+        		</Suspense>
+        		<main className="flex-1">
+          			<Suspense fallback={<PreLoaderProvider />}>
+            			<LenisProvider>
+              				{children}
+            			</LenisProvider>
+          			</Suspense>
+        		</main>
 
-        <Suspense fallback={<h1>Loading footer...</h1>}>
-          <Footer />
-        </Suspense>
-      </body>
-    </html>
-  );
+        		<Suspense fallback={<h1>Loading footer...</h1>}>
+          			<Footer />
+        		</Suspense>
+        		</PreLoaderProvider>
+      		</body>
+    	</html>
+  	);
 }
