@@ -99,7 +99,7 @@ const FloatingLabel = styled.label`
   	}
 
   	${StyledInput}:focus + & {
-    	color: rgb(59 130 246);
+    	color: rgb(230, 230, 230);
   	}
 `;
 
