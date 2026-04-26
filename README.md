@@ -27,3 +27,8 @@ If you want to talk about work, ideas, or collaborations:
 
 - **Email:** [harman.codes.dev@gmail.com](mailto:harman.codes.dev@gmail.com)  
 - **Instagram:** [harman.jsx](https://instagram.com/harman.jsx)
+
+
+---
+# Note:
+Real URL of Website would be shared before 2 June
