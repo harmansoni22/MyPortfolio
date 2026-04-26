@@ -6,16 +6,22 @@ import ProjectSection from "./components/sections/Projects/Projects";
 import HowIWork from "./components/sections/HowIWork/HowIwork";
 import Failures from "./components/sections/Failures/Failures";
 
+export const metadata = {
+  	title: "Home",
+  	description:
+        "Frontend-focused developer building AI-driven projects with clean architecture and real-world problem solving.",
+}
+
 export default function Home() {
-  return (
-    <>
-      <CustomScroll />
-      <HeroSection />
-      <WhoAmI />
-      <ProjectSection />
-      <HowIWork />
-      <Failures />
-      <ContactMe />
-    </>
-  );
+  	return (
+    	<>
+      		<CustomScroll />
+      		<HeroSection />
+      		<WhoAmI />
+      		<ProjectSection />
+      		<HowIWork />
+      		<Failures />
+      		<ContactMe />
+    	</>
+  	);
 }
