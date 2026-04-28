@@ -25,7 +25,7 @@ export default function LenisProvider({ children }) {
     }, []);
 
     return (
-        <ReactLenis root ref={lenisRef} options={{ lerp: 0.1, duration: 1.5 }}>
+        <ReactLenis root ref={lenisRef} options={{ lerp: 0.2, duration: 1.5 }}>
             {children}
         </ReactLenis>
     );
