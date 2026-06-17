@@ -26,18 +26,12 @@ const Navbar = () => {
     },
   ];
 
+  // Only verified links are listed. Add X/LinkedIn here once real profile
+  // URLs are confirmed (e.g. https://www.linkedin.com/in/<handle>).
   const socialItems = [
-    {
-      label: "X",
-      link: "https://x.com",
-    },
     {
       label: "Github",
       link: "https://github.com/harmansoni22",
-    },
-    {
-      label: "LinkedIn",
-      link: "https://linkedin.com/harmansoni",
     },
   ];
 

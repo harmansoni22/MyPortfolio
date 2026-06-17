@@ -1,31 +1,58 @@
 @import "tailwindcss";
 
+/*
+  Technical-document palette. Dark, restrained.
+  Accent (amber) is rationed — links, active states, one emphasis per viewport.
+  No gradients, glow, or neon.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #08090b; /* near-absolute black, slightly cool */
+  --surface: #101216; /* raised: cards, project entries, footer */
+  --foreground: #e9e9ec; /* bone — primary text */
+  --muted: #8b8d94; /* secondary / metadata */
+  --rule: #21232b; /* borders, dividers */
+  --accent: #cfa15a; /* muted amber — rationed */
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
+  --color-accent: var(--accent);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-satoshi);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-satoshi), var(--font-inter), "Segoe UI", sans-serif;
   scrollbar-width: none;
+  -webkit-font-smoothing: antialiased;
 }
- html::-webkit-scrollbar,
- body::-webkit-scrollbar {
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
   display: none;
- }
+}
+
+/* Selection picks up the single accent, kept subtle. */
+::selection {
+  background: rgba(207, 161, 90, 0.22);
+  color: var(--foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import styles from '@/app/styles/PreLoader.module.css';
 
 export default function PreLoader({ 

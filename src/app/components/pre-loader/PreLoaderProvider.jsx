@@ -29,11 +29,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'motion/react';
 import PreLoader from './PreLoader';
 
 export default function PreloaderProvider({ children }) {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     // Lock scroll while loading

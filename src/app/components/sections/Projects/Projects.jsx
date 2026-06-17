@@ -1,98 +1,155 @@
-import BorderGlow from "../../effects/border/BorderGlow";
-import ElectricBorder from "../../effects/border/ElectricBorder";
-import GradientText from "../../effects/TextEffects/GradientText";
+import Link from "next/link";
+import { projects } from "@/libs/content/projects";
+
+const FEATURED_PROJECT_LIMIT = 3;
 
 const ProjectSection = () => {
+    const featured = projects
+        .filter((project) => project.featured)
+        .slice(0, FEATURED_PROJECT_LIMIT);
+
     return (
-        <>
-            <section className="max-w-6xl mx-auto px-6 py-16">
-                <GradientText
-                    colors={["#0f23fa", "#0f85fa", "#0fe7fa"]}
-                    fontSize={50}
-                >
-                    My Projects
-                </GradientText>
+        <section className="border-b border-rule bg-background">
+            <div className="mx-auto max-w-6xl px-6 py-20 md:px-10">
+                <div className="max-w-3xl">
+                    <p className="font-mono text-xs uppercase tracking-[0.24em] text-muted">
+                        Selected Work
+                    </p>
 
-                <p className="mt-4 max-w-2xl text-neutral-400 leading-relaxed">
-                    A few projects that pushed me to think deeper about product quality,
-                    system behavior, and what makes software actually useful in daily work.
-                </p>
+                    <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+                        Projects currently shaping my focus.
+                    </h2>
 
-                <div className="mt-8 grid md:grid-cols-2 gap-6">
-                    {/* <ElectricBorder
-                        color="#4323f1"
-                        chaos={0.1}
-                        speed={0.5}
-                    > */}
-                    <BorderGlow
-                        coneSpread={35}
-                        glowRadius={10}
-                        animated={true}
-                        edgeSensitivity={82}
-                    >
-                        <div className="p-6">
-                            <h3 className="text-white font-medium text-lg">
-                                OmniStart
-                            </h3>
-                            <p className="mt-2 text-neutral-400 font-body">
-                                Turns raw ideas into structured execution plans so teams can move from thinking to doing faster.
-                            </p>
-                            <a href="/projects/omnistart" className="mt-4 inline-block text-sm text-white">
-                                View details -&gt;
-                            </a>
-                        </div>
-                    </BorderGlow>
-                    {/* </ElectricBorder> */}
-
-                    {/* <ElectricBorder
-                        color="#4323f1"
-                        chaos={0.1}
-                        speed={0.5}
-                    > */}
-                    <BorderGlow
-                        animated={true}
-                        coneSpread={35}
-                        glowRadius={10}
-                        edgeSensitivity={81}
-                    >
-                        <div className="p-6">
-                            <h3 className="text-white font-medium text-lg">
-                                AI Education Platform
-                            </h3>
-                            <p className="mt-2 text-neutral-400 font-body">
-                                An AI support layer for student questions, designed to stay clear, fast, and scalable.
-                            </p>
-                            <a href="/projects/ai-platform" className="mt-4 inline-block text-sm text-white">
-                                View details -&gt;
-                            </a>
-                        </div>
-                    </BorderGlow>
-                    {/* </ElectricBorder> */}
-
-                    {/* <ElectricBorder
-                        color="#4323f1"
-                        chaos={0.1}
-                        speed={0.5}
-                    > */}
-                    <BorderGlow
-                        animated={true}
-                        coneSpread={35}
-                        glowRadius={10}
-                        edgeSensitivity={15}
-                    >
-                        <div className="p-6">
-                            <h3 className="text-white font-medium text-lg">
-                                Backend &amp; Deployment
-                            </h3>
-                            <p className="mt-2 text-neutral-400 font-body">
-                                Hands-on deployment and debugging work where reliability mattered more than perfect local setups.
-                            </p>
-                        </div>
-                    </BorderGlow>
-                    {/* </ElectricBorder> */}
+                    <p className="mt-4 max-w-2xl text-base leading-7 text-foreground/70">
+                        Projects spanning education technology, productivity
+                        systems, AI-assisted workflows, and client-facing web
+                        applications.
+                    </p>
                 </div>
-            </section>
-        </>
+
+                <div className="mt-12 space-y-8">
+                    {featured.map((project, index) => (
+                        <article
+                            key={project.slug}
+                            className="group rounded-3xl border border-rule bg-surface p-8 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40"
+                        >
+                            <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+                                <div className="space-y-3">
+                                    <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+                                        {String(index + 1).padStart(2, "0")}
+                                    </p>
+
+                                    <h3 className="text-2xl font-semibold text-foreground">
+                                        {project.title}
+                                    </h3>
+
+                                    <p className="max-w-2xl text-sm leading-7 text-foreground/80">
+                                        {project.tagline}
+                                    </p>
+
+                                    {project.tech?.length ? (
+                                        <div className="flex flex-wrap gap-2 pt-2">
+                                            {project.tech
+                                                .slice(0, 5)
+                                                .map((tech) => (
+                                                    <span
+                                                        key={tech}
+                                                        className="rounded-full border border-rule px-3 py-1 text-xs text-muted"
+                                                    >
+                                                        {tech}
+                                                    </span>
+                                                ))}
+                                        </div>
+                                    ) : null}
+                                </div>
+
+                                <dl className="grid gap-4 text-xs font-mono uppercase tracking-[0.2em] text-muted sm:grid-cols-3 lg:text-right">
+                                    <div>
+                                        <dt>Year</dt>
+                                        <dd className="mt-1 text-foreground/90">
+                                            {project.year}
+                                        </dd>
+                                    </div>
+
+                                    <div>
+                                        <dt>Status</dt>
+                                        <dd className="mt-1 text-foreground/90">
+                                            {project.status}
+                                        </dd>
+                                    </div>
+
+                                    <div>
+                                        <dt>Role</dt>
+                                        <dd className="mt-1 text-foreground/90">
+                                            {project.role}
+                                        </dd>
+                                    </div>
+                                </dl>
+                            </div>
+
+                            <div className="mt-8 flex flex-wrap items-center gap-4 text-sm">
+                                {project.links?.live ? (
+                                    <a
+                                        href={project.links.live}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-accent underline decoration-accent/20 underline-offset-4 transition hover:text-foreground"
+                                    >
+                                        Live Demo
+                                        <span
+                                            aria-hidden="true"
+                                            className="ml-1"
+                                        >
+                                            ↗
+                                        </span>
+                                        <span className="sr-only">
+                                            Opens in new tab
+                                        </span>
+                                    </a>
+                                ) : null}
+
+                                {project.links?.github ? (
+                                    <a
+                                        href={project.links.github}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-muted underline decoration-transparent underline-offset-4 transition hover:text-foreground"
+                                    >
+                                        GitHub
+                                        <span
+                                            aria-hidden="true"
+                                            className="ml-1"
+                                        >
+                                            ↗
+                                        </span>
+                                        <span className="sr-only">
+                                            Opens in new tab
+                                        </span>
+                                    </a>
+                                ) : null}
+
+                                <Link
+                                    href={`/projects/${project.slug}`}
+                                    className="text-muted underline decoration-transparent underline-offset-4 transition hover:text-foreground"
+                                >
+                                    Case Study →
+                                </Link>
+                            </div>
+                        </article>
+                    ))}
+                </div>
+
+                <div className="mt-12">
+                    <Link
+                        href="/projects"
+                        className="inline-flex items-center gap-2 font-medium text-accent underline decoration-accent/20 underline-offset-4 transition hover:text-foreground"
+                    >
+                        View all projects
+                        <span aria-hidden="true">→</span>
+                    </Link>
+                </div>
+            </div>
+        </section>
     );
 };
 

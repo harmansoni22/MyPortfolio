@@ -1,13 +1,15 @@
 import "./globals.css";
 import Navbar from "./components/layout/navigation/Navbar";
 import SourceTracker from "@/components/analytics/SourceTracker";
-import { satoshi, inter } from "@/libs/fonts";
+import { satoshi, inter, mono } from "@/libs/fonts";
 import { Suspense } from "react";
 import LenisProvider from "./components/providers/LenisProvider";
 import Footer from "./components/layout/footer/footer";
 import PreLoaderProvider from "./components/pre-loader/PreLoaderProvider";
+import { siteUrl } from "@/libs/site";
 
 export const metadata = {
+	metadataBase: new URL(siteUrl),
   	title: {
 		default: "Harman Soni | Developer | Student",
 		template: "%s | Harman Soni"
@@ -70,11 +72,13 @@ export default function RootLayout({ children }) {
   	return (
     	<html
       		lang="en"
-      		className={`${satoshi.variable} ${inter.variable} h-full antialiased`}
+      		className={`${satoshi.variable} ${inter.variable} ${mono.variable} h-full antialiased`}
       		suppressHydrationWarning
     	>
       		<body className="min-h-full flex flex-col">
-        		<SourceTracker />
+        		<Suspense fallback={null}>
+          			<SourceTracker />
+        		</Suspense>
         		<PreLoaderProvider>
         		<Suspense fallback={null}>
           			<Navbar />

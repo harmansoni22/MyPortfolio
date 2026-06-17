@@ -1,34 +1,29 @@
-import GradientText from "../../effects/TextEffects/GradientText";
-
 const HowIWork = () => {
-    return (
-        <>
-            <section className="max-w-4xl mx-auto px-6 py-16">
-
-  <GradientText colors={["#0f23fa", "#0f85fa", "#0fe7fa"]}>
-    <h2 className="text-2xl md:text-3xl font-semibold">
-      How I Work
-    </h2>
-  </GradientText>
-
-  <p className="mt-6 text-neutral-400 leading-relaxed">
-    I start with a small version that works end-to-end, even if it is not polished yet.
-    Shipping early helps me learn what really matters.
-  </p>
-
-  <p className="mt-4 text-neutral-400 leading-relaxed">
-    Then I iterate in short loops: test, break, debug, improve, repeat.
-    That rhythm keeps momentum high and decisions grounded in reality.
-  </p>
-
-  <p className="mt-4 text-neutral-400 leading-relaxed">
-    I care about the details people actually feel:
-    clear interfaces, predictable behavior, and fewer "why did this break?" moments.
-  </p>
-
-</section>
-        </>
-    )
-}
+  return (
+    <section className="border-b border-rule bg-background">
+      <div className="mx-auto max-w-6xl px-6 py-20 md:px-10">
+        <div className="rounded-3xl border border-rule bg-surface p-10">
+          <p className="font-mono text-xs uppercase tracking-[0.24em] text-muted">
+            Approach
+          </p>
+          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+            Deliver what works before adding what looks nice.
+          </h2>
+          <div className="mt-8 space-y-6 text-base leading-8 text-foreground/80">
+            <p>
+              I start by building an honest baseline that works end-to-end, then refine the UI and edge cases around actual behavior and feedback.
+            </p>
+            <p>
+              Real confidence comes from predictable state, clear error handling, and systems that handle the unexpected without failing loudly.
+            </p>
+            <p>
+              My workflow is deliberately quiet: ship a stable version fast, monitor what matters, and improve the parts people rely on most.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default HowIWork;

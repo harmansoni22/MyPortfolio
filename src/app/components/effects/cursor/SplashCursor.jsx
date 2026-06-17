@@ -8,6 +8,7 @@ function SplashCursor({
   DENSITY_DISSIPATION = 3.5,
   VELOCITY_DISSIPATION = 2,
   PRESSURE = 0.1,
+  POSITION = "fixed",
   PRESSURE_ITERATIONS = 20,
   CURL = 3,
   SPLAT_RADIUS = 0.2,
@@ -65,6 +66,7 @@ function SplashCursor({
     const pointers = [new pointerPrototype()];
 
     const { gl, ext } = getWebGLContext(canvas);
+    if (!gl) return;
     if (!ext.supportLinearFiltering) {
       config.DYE_RESOLUTION = 256;
       config.SHADING = false;
@@ -84,6 +86,7 @@ function SplashCursor({
         gl =
           canvas.getContext("webgl", params) ||
           canvas.getContext("experimental-webgl", params);
+      if (!gl) return { gl: null, ext: {} };
       let halfFloat;
       let supportLinearFiltering;
       if (isWebGL2) {
@@ -1106,9 +1109,9 @@ function SplashCursor({
 
     function generateColor() {
      const palette = [
-       { r: 0.06, g: 0.14, b: 0.06 },
+       { r: 0.06, g: 0.14, b: 0.76 },
        { r: 0.06, g: 0.72, b: 0.14 },
-       { r: 0.78, g: 0.43, b: 0.18 },
+       { r: 0.78, g: 0.13, b: 0.18 },
      ];
 
      return palette[Math.floor(Math.random() * palette.length)];
@@ -1478,7 +1481,7 @@ function SplashCursor({
 
   return (
     <div
-      className="fixed top-0 z-[999] left-0 z-50 pointer-events-none w-full h-full"
+      className={`${POSITION === "absolute" ? "absolute" : "fixed"} top-0 z-[999] left-0 z-50 pointer-events-none w-full h-full ${className}`}
       style={{ mixBlendMode: BLEND_MODE, opacity: LAYER_OPACITY }}
     >
       <canvas
